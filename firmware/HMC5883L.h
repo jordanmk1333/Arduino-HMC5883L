@@ -21,10 +21,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef HMC5883L_h
 #define HMC5883L_h
 
-#if ARDUINO >= 100
-#include "Arduino.h"
+#ifdef SPARK
+	#include "application.h"
+#elif (ARDUINO >= 100)
+	#include "Arduino.h"25
 #else
-#include "WProgram.h"
+	#include "WProgram.h"
 #endif
 
 #define HMC5883L_ADDRESS              (0x1E)
