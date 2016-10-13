@@ -26,7 +26,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "WProgram.h"
 #endif
 
+#ifdef __AVR_ATtiny85__
+#include <TinyWireM.h>
+#else
+#ifndef SPARK
 #include <Wire.h>
+#endif
+#endif
 
 #include "HMC5883L.h"
 
