@@ -198,13 +198,8 @@ hmc5883l_samples_t HMC5883L::getSamples(void)
 void HMC5883L::writeRegister8(uint8_t reg, uint8_t value)
 {
     Wire.beginTransmission(HMC5883L_ADDRESS);
-    #if ARDUINO >= 100
         Wire.write(reg);
         Wire.write(value);
-    #else
-        Wire.send(reg);
-        Wire.send(value);
-    #endif
     Wire.endTransmission();
 }
 
@@ -213,19 +208,14 @@ uint8_t HMC5883L::fastRegister8(uint8_t reg)
 {
     uint8_t value;
     Wire.beginTransmission(HMC5883L_ADDRESS);
-    #if ARDUINO >= 100
+
         Wire.write(reg);
-    #else
-        Wire.send(reg);
-    #endif
+
+
     Wire.endTransmission();
 
     Wire.requestFrom(HMC5883L_ADDRESS, 1);
-    #if ARDUINO >= 100
         value = Wire.read();
-    #else
-        value = Wire.receive();
-    #endif
     Wire.endTransmission();
 
     return value;
@@ -236,21 +226,17 @@ uint8_t HMC5883L::readRegister8(uint8_t reg)
 {
     uint8_t value;
     Wire.beginTransmission(HMC5883L_ADDRESS);
-    #if ARDUINO >= 100
+
         Wire.write(reg);
-    #else
-        Wire.send(reg);
-    #endif
+
     Wire.endTransmission();
 
     Wire.beginTransmission(HMC5883L_ADDRESS);
     Wire.requestFrom(HMC5883L_ADDRESS, 1);
     while(!Wire.available()) {};
-    #if ARDUINO >= 100
+
         value = Wire.read();
-    #else
-        value = Wire.receive();
-    #endif
+
     Wire.endTransmission();
 
     return value;
@@ -261,23 +247,18 @@ int16_t HMC5883L::readRegister16(uint8_t reg)
 {
     int16_t value;
     Wire.beginTransmission(HMC5883L_ADDRESS);
-    #if ARDUINO >= 100
+
         Wire.write(reg);
-    #else
-        Wire.send(reg);
-    #endif
+
     Wire.endTransmission();
 
     Wire.beginTransmission(HMC5883L_ADDRESS);
     Wire.requestFrom(HMC5883L_ADDRESS, 2);
     while(!Wire.available()) {};
-    #if ARDUINO >= 100
+
         uint8_t vha = Wire.read();
         uint8_t vla = Wire.read();
-    #else
-        uint8_t vha = Wire.receive();
-        uint8_t vla = Wire.receive();
-    #endif
+
     Wire.endTransmission();
 
     value = vha << 8 | vla;
