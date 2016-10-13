@@ -18,11 +18,11 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifdef SPARK 
+#ifdef SPARK
 	#include "application.h"
-#elif (ARDUINO >= 100) 
+#elif (ARDUINO >= 100)
 	#include "Arduino.h"
-#else 
+#else
 	#include "WProgram.h"
 #endif
 
