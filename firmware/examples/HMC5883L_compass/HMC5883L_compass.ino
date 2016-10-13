@@ -1,12 +1,6 @@
-/*
-  HMC5883L Triple Axis Digital Compass. Compass Example.
-  Read more: http://www.jarzebski.pl/arduino/czujniki-i-sensory/3-osiowy-magnetometr-hmc5883l.html
-  GIT: https://github.com/jarzebski/Arduino-HMC5883L
-  Web: http://www.jarzebski.pl
-  (c) 2014 by Korneliusz Jarzebski
-*/
 
-#include <Wire.h>
+
+//#include <Wire.h>
 #include <HMC5883L.h>
 
 HMC5883L compass;
