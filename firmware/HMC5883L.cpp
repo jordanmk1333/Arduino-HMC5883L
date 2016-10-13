@@ -18,10 +18,12 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#if ARDUINO >= 100
-#include "Arduino.h"
-#else
-#include "WProgram.h"
+#ifdef SPARK 
+	#include "application.h"
+#elif (ARDUINO >= 100) 
+	#include "Arduino.h"
+#else 
+	#include "WProgram.h"
 #endif
 
 #include <Wire.h>
