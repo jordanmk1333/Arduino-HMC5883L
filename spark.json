@@ -1,7 +1,7 @@
 {
-"name": "SparkJson",
+"name": "HMC5883L",
 "version": "0.0.1",
-"author": "bblanchon",
+"author": "jordanmk1333",
 "license": "Choose a license",
-"description": "JSON library Ported from @bblanchon"
+"description": "description"
 } 
