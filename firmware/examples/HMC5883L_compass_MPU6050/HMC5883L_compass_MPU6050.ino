@@ -6,7 +6,7 @@
   (c) 2014 by Korneliusz Jarzebski
 */
 
-#include <Wire.h>
+//#include <Wire.h>
 #include <HMC5883L.h>
 #include <MPU6050.h>
 
@@ -51,7 +51,7 @@ void setup()
   compass.setSamples(HMC5883L_SAMPLES_8);
 
   // Set calibration offset. See HMC5883L_calibration.ino
-  compass.setOffset(0, 0); 
+  compass.setOffset(0, 0);
 }
 
 void loop()
@@ -74,14 +74,14 @@ void loop()
   {
     heading += 2 * PI;
   }
- 
+
   if (heading > 2 * PI)
   {
     heading -= 2 * PI;
   }
 
   // Convert to degrees
-  float headingDegrees = heading * 180/M_PI; 
+  float headingDegrees = heading * 180/M_PI;
 
   // Output
   Serial.print(" Heading = ");

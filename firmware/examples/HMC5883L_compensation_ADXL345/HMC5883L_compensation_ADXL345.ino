@@ -6,7 +6,7 @@
   (c) 2014 by Korneliusz Jarzebski
 */
 
-#include <Wire.h>
+//#include <Wire.h>
 #include <HMC5883L.h>
 #include <ADXL345.h>
 
@@ -48,7 +48,7 @@ void setup()
   compass.setSamples(HMC5883L_SAMPLES_8);
 
   // Set calibration offset. See HMC5883L_calibration.ino
-  compass.setOffset(0, 0); 
+  compass.setOffset(0, 0);
 }
 
 // No tilt compensation
@@ -57,11 +57,11 @@ float noTiltCompensate(Vector mag)
   float heading = atan2(mag.YAxis, mag.XAxis);
   return heading;
 }
- 
+
 // Tilt compensation
 float tiltCompensate(Vector mag, Vector normAccel)
 {
-  // Pitch & Roll 
+  // Pitch & Roll
 
   float roll;
   float pitch;
@@ -76,7 +76,7 @@ float tiltCompensate(Vector mag, Vector normAccel)
 
   // Some of these are used twice, so rather than computing them twice in the algorithem we precompute them before hand.
   float cosRoll = cos(roll);
-  float sinRoll = sin(roll);  
+  float sinRoll = sin(roll);
   float cosPitch = cos(pitch);
   float sinPitch = sin(pitch);
 
@@ -127,8 +127,8 @@ void loop()
   heading2 = correctAngle(heading2);
 
   // Convert to degrees
-  heading1 = heading1 * 180/M_PI; 
-  heading2 = heading2 * 180/M_PI; 
+  heading1 = heading1 * 180/M_PI;
+  heading2 = heading2 * 180/M_PI;
 
   // Output
   Serial.print(heading1);
@@ -137,4 +137,3 @@ void loop()
 
   delay(100);
 }
-

@@ -6,7 +6,7 @@
   (c) 2014 by Korneliusz Jarzebski
 */
 
-#include <Wire.h>
+//#include <Wire.h>
 #include <HMC5883L.h>
 
 HMC5883L compass;
@@ -36,7 +36,7 @@ void setup()
   compass.setSamples(HMC5883L_SAMPLES_8);
 
   // Set calibration offset. See HMC5883L_calibration.ino
-  compass.setOffset(0, 0); 
+  compass.setOffset(0, 0);
 }
 
 void loop()
@@ -60,18 +60,18 @@ void loop()
   {
     heading += 2 * PI;
   }
- 
+
   if (heading > 2 * PI)
   {
     heading -= 2 * PI;
   }
 
   // Convert to degrees
-  float headingDegrees = heading * 180/M_PI; 
+  float headingDegrees = heading * 180/M_PI;
 
   // Fix HMC5883L issue with angles
   float fixedHeadingDegrees;
- 
+
   if (headingDegrees >= 1 && headingDegrees < 240)
   {
     fixedHeadingDegrees = map(headingDegrees, 0, 239, 0, 179);
@@ -88,7 +88,7 @@ void loop()
   {
     smoothHeadingDegrees = previousDegree;
   }
-  
+
   previousDegree = smoothHeadingDegrees;
 
   // Output
@@ -102,11 +102,10 @@ void loop()
   Serial.print(":");
   Serial.print(fixedHeadingDegrees);
   Serial.print(":");
-  Serial.print(smoothHeadingDegrees);  
+  Serial.print(smoothHeadingDegrees);
   Serial.println();
 
   // One loop: ~5ms @ 115200 serial.
   // We need delay ~28ms for allow data rate 30Hz (~33ms)
   delay(30);
 }
-

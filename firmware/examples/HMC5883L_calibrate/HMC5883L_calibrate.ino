@@ -6,7 +6,7 @@
   (c) 2014 by Korneliusz Jarzebski
 */
 
-#include <Wire.h>
+//#include <Wire.h>
 #include <HMC5883L.h>
 
 HMC5883L compass;
