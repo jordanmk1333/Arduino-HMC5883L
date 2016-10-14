@@ -6,8 +6,10 @@
   (c) 2014 by Korneliusz Jarzebski
 */
 
-#include <Wire.h>
-#include <HMC5883L.h>
+//#include <Wire.h>
+//#include <HMC5883L.h>
+#include "HMC5883L/HMC5883L.h"
+#include "math.h"
 
 HMC5883L compass;
 
@@ -22,7 +24,7 @@ void setup()
     Serial.println("Could not find a valid HMC5883L sensor, check wiring!");
     delay(500);
   }
-  
+
   // Set measurement range
   // +/- 0.88 Ga: HMC5883L_RANGE_0_88GA
   // +/- 1.30 Ga: HMC5883L_RANGE_1_3GA (default)
@@ -39,7 +41,7 @@ void setup()
   // Single-Measurement:     HMC5883L_SINGLE
   // Continuous-Measurement: HMC5883L_CONTINOUS (default)
   compass.setMeasurementMode(HMC5883L_CONTINOUS);
- 
+
   // Set data rate
   //  0.75Hz: HMC5883L_DATARATE_0_75HZ
   //  1.50Hz: HMC5883L_DATARATE_1_5HZ
@@ -64,7 +66,7 @@ void setup()
 void checkSettings()
 {
   Serial.print("Selected range: ");
-  
+
   switch (compass.getRange())
   {
     case HMC5883L_RANGE_0_88GA: Serial.println("0.88 Ga"); break;
@@ -77,10 +79,10 @@ void checkSettings()
     case HMC5883L_RANGE_8_1GA:  Serial.println("8.1 Ga"); break;
     default: Serial.println("Bad range!");
   }
-  
+
   Serial.print("Selected Measurement Mode: ");
   switch (compass.getMeasurementMode())
-  {  
+  {
     case HMC5883L_IDLE: Serial.println("Idle mode"); break;
     case HMC5883L_SINGLE:  Serial.println("Single-Measurement"); break;
     case HMC5883L_CONTINOUS:  Serial.println("Continuous-Measurement"); break;
@@ -89,7 +91,7 @@ void checkSettings()
 
   Serial.print("Selected Data Rate: ");
   switch (compass.getDataRate())
-  {  
+  {
     case HMC5883L_DATARATE_0_75_HZ: Serial.println("0.75 Hz"); break;
     case HMC5883L_DATARATE_1_5HZ:  Serial.println("1.5 Hz"); break;
     case HMC5883L_DATARATE_3HZ:  Serial.println("3 Hz"); break;
@@ -99,10 +101,10 @@ void checkSettings()
     case HMC5883L_DATARATE_75HZ:  Serial.println("75 Hz"); break;
     default: Serial.println("Bad data rate!");
   }
-  
+
   Serial.print("Selected number of samples: ");
   switch (compass.getSamples())
-  {  
+  {
     case HMC5883L_SAMPLES_1: Serial.println("1"); break;
     case HMC5883L_SAMPLES_2: Serial.println("2"); break;
     case HMC5883L_SAMPLES_4: Serial.println("4"); break;
@@ -129,7 +131,7 @@ void loop()
   Serial.print(norm.YAxis);
   Serial.print(" ZNorm = ");
   Serial.print(norm.ZAxis);
-  Serial.println();  
+  Serial.println();
 
   delay(100);
 }

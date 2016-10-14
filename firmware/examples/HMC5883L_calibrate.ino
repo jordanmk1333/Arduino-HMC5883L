@@ -7,7 +7,9 @@
 */
 
 //#include <Wire.h>
-#include <HMC5883L.h>
+//#include <HMC5883L.h>
+#include "HMC5883L/HMC5883L.h"
+#include "math.h"
 
 HMC5883L compass;
 

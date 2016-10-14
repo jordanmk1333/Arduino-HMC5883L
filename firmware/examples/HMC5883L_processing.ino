@@ -7,7 +7,9 @@
 */
 
 //#include <Wire.h>
-#include <HMC5883L.h>
+//#include <HMC5883L.h>
+#include "HMC5883L/HMC5883L.h"
+#include "math.h"
 
 HMC5883L compass;
 
@@ -58,12 +60,12 @@ void loop()
   // Correct for heading < 0deg and heading > 360deg
   if (heading < 0)
   {
-    heading += 2 * PI;
+    heading += 2 * M_PI;
   }
 
-  if (heading > 2 * PI)
+  if (heading > 2 * M_PI)
   {
-    heading -= 2 * PI;
+    heading -= 2 * M_PI;
   }
 
   // Convert to degrees
